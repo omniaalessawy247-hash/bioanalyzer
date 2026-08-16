@@ -16,9 +16,6 @@ import {
   FaChevronDown,
   FaCheckCircle,
 } from 'react-icons/fa';
-import Allnavbar from '../Home/Allnavbar';
-import Allfooter from '../Home/Allfooter';
- 
 
 // ═══════════════════════════════════════════════════════════════
 //  FULL FEATURE CATALOG — mirrors every capability in BioAnalyzer.jsx
@@ -213,8 +210,6 @@ function Allabout() {
 
   return (
     <div>
-      <Allnavbar />
-
       {/* Full-Screen Video Section */}
       <div style={{ width: '100%', height: '750px', overflow: 'hidden', marginTop: '20px' }}>
         <video
@@ -881,8 +876,6 @@ function Allabout() {
           </Container>
         </section>
       </section>
-
-      <Allfooter />
     </div>
   );
 }

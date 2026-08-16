@@ -1,6 +1,4 @@
 import React, { useState, useCallback, useRef } from 'react';
-import Allnavbar from '../Home/Allnavbar';
-import Allfooter from '../Home/Allfooter';
 
 
 // ═══════════════════════════════════════════════════════════════
@@ -1023,9 +1021,6 @@ export default function BioAnalyzer() {
 
   return(
     <div className="ba-root">
-      {/* ── NAVBAR ── */}
-      <Allnavbar />
-
       <div className="ba-main">
         <div className="ba-header">
           <div className="ba-container">
@@ -1233,11 +1228,6 @@ export default function BioAnalyzer() {
             </div>
           )}
         </div>
-      </div>
-
-      {/* ── FOOTER (always the last thing on the page, no trailing gap) ── */}
-      <div className="ba-footer-slot">
-        <Allfooter />
       </div>
     </div>
   );

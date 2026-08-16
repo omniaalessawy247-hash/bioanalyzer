@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Container, Form, Row, Col } from 'react-bootstrap';
-import Allnavbar from '../Home/Allnavbar';
-import Allfooter from '../Home/Allfooter';
+
 
 const AuthPage = () => {
   const [credentials, setCredentials] = useState({
@@ -50,152 +49,168 @@ const AuthPage = () => {
   };
 
   return (
-    <div>
-      <Allnavbar />
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+    <div className="auth-page">
       <Container className="auth-container">
-        <h1 className="mb-4">{authState === 'login' ? 'Login' : 'Sign Up'}</h1>
-        
+        {/* Tab switch */}
+        <div className="auth-tabs">
+          <button
+            type="button"
+            className={`auth-tab ${authState === 'login' ? 'active' : ''}`}
+            onClick={() => authState !== 'login' && toggleForm()}
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            className={`auth-tab ${authState === 'signup' ? 'active' : ''}`}
+            onClick={() => authState !== 'signup' && toggleForm()}
+          >
+            Sign Up
+          </button>
+        </div>
+
+        <h1 className="auth-title">{authState === 'login' ? 'Welcome back' : 'Create your account'}</h1>
+        <p className="auth-subtitle">
+          {authState === 'login'
+            ? 'Enter your details to access your workspace.'
+            : 'It takes less than a minute to get started.'}
+        </p>
+
         {/* Login Form */}
         {authState === 'login' && (
-          <Form onSubmit={handleLogin} className="animated-bounce-form">
+          <Form onSubmit={handleLogin} className="auth-form">
             <div className="input-container">
-              <Form.Group as={Row} className="mb-3">
-                <Form.Label column md={3} className="form-label">Email :</Form.Label>
-                <Col md={6}>
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    value={credentials.email}
-                    onChange={handleChangeLogin}
-                    required
-                    placeholder="Enter your email"
-                    className="form-control"
-                  />
-                </Col>
+              <Form.Group className="mb-3">
+                <Form.Label className="form-label">Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  value={credentials.email}
+                  onChange={handleChangeLogin}
+                  required
+                  placeholder="Enter your email"
+                  className="form-control"
+                />
               </Form.Group>
             </div>
 
             <div className="input-container">
-              <Form.Group as={Row} className="mb-3">
-                <Form.Label column md={3} className="form-label">Password :</Form.Label>
-                <Col md={6}>
-                  <Form.Control
-                    type="password"
-                    name="password"
-                    value={credentials.password}
-                    onChange={handleChangeLogin}
-                    required
-                    placeholder="Enter your password"
-                    className="form-control"
-                  />
-                </Col>
+              <Form.Group className="mb-3">
+                <Form.Label className="form-label">Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  value={credentials.password}
+                  onChange={handleChangeLogin}
+                  required
+                  placeholder="Enter your password"
+                  className="form-control"
+                />
               </Form.Group>
+            </div>
+
+            <div className="extra-links extra-links-top">
+              <a href="/forgot-password" className="forgot-password-link">Forgot your password?</a>
+            </div>
+
+            <Button variant="primary" type="submit" className="submit-btn">Login</Button>
+
+            <div className="divider"><span>or continue with</span></div>
+
+            <div className="social-login">
+              <button type="button" className="social-btn facebook-btn" onClick={() => handleSocialLogin('Facebook')}>Facebook</button>
+              <button type="button" className="social-btn google-btn" onClick={() => handleSocialLogin('Google')}>Google</button>
             </div>
 
             <div className="extra-links">
-              <a href="#!" className="register-link" onClick={toggleForm}>Don't have an account? Sign up</a><br />
-              <a href="/forgot-password" className="forgot-password-link">Forgot your password?</a>
-            </div>
-            <Button variant="primary" type="submit" className="mt-3">Login</Button>
-
-            <div className="social-login">
-              <button className="social-btn facebook-btn" onClick={() => handleSocialLogin('Facebook')}>Login with Facebook</button>
-              <button className="social-btn google-btn" onClick={() => handleSocialLogin('Google')}>Login with Google</button>
+              <span>Don't have an account? </span>
+              <a href="#!" className="register-link" onClick={toggleForm}>Sign up</a>
             </div>
           </Form>
         )}
 
         {/* Sign Up Form */}
         {authState === 'signup' && (
-          <Form onSubmit={handleSignUp} className="animated-bounce-form">
+          <Form onSubmit={handleSignUp} className="auth-form">
             <div className="input-container">
-              <Form.Group as={Row} className="mb-3">
-                <Form.Label column md={3} className="form-label">Name :</Form.Label>
-                <Col md={6}>
-                  <Form.Control
-                    type="text"
-                    name="name"
-                    value={userData.name}
-                    onChange={handleChangeSignup}
-                    required
-                    placeholder="Enter your name"
-                  />
-                </Col>
+              <Form.Group className="mb-3">
+                <Form.Label className="form-label">Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="name"
+                  value={userData.name}
+                  onChange={handleChangeSignup}
+                  required
+                  placeholder="Enter your name"
+                />
               </Form.Group>
             </div>
 
             <div className="input-container">
-              <Form.Group as={Row} className="mb-3">
-                <Form.Label column md={3} className="form-label">Address :</Form.Label>
-                <Col md={6}>
-                  <Form.Control
-                    type="text"
-                    name="address"
-                    value={userData.address}
-                    onChange={handleChangeSignup}
-                    required
-                    placeholder="Enter your address"
-                  />
-                </Col>
+              <Form.Group className="mb-3">
+                <Form.Label className="form-label">Address</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="address"
+                  value={userData.address}
+                  onChange={handleChangeSignup}
+                  required
+                  placeholder="Enter your address"
+                />
               </Form.Group>
             </div>
+
+            <Row>
+              <Col md={6}>
+                <div className="input-container">
+                  <Form.Group className="mb-3">
+                    <Form.Label className="form-label">Date of Birth</Form.Label>
+                    <Form.Control
+                      type="date"
+                      name="birthdate"
+                      value={userData.birthdate}
+                      onChange={handleChangeSignup}
+                      required
+                    />
+                  </Form.Group>
+                </div>
+              </Col>
+              <Col md={6}>
+                <div className="input-container">
+                  <Form.Group className="mb-3">
+                    <Form.Label className="form-label">Email</Form.Label>
+                    <Form.Control
+                      type="email"
+                      name="email"
+                      value={userData.email}
+                      onChange={handleChangeSignup}
+                      required
+                      placeholder="Enter your email"
+                    />
+                  </Form.Group>
+                </div>
+              </Col>
+            </Row>
 
             <div className="input-container">
-              <Form.Group as={Row} className="mb-3">
-                <Form.Label column md={3} className="form-label">Date of Birth :</Form.Label>
-                <Col md={6}>
-                  <Form.Control
-                    type="date"
-                    name="birthdate"
-                    value={userData.birthdate}
-                    onChange={handleChangeSignup}
-                    required
-                  />
-                </Col>
+              <Form.Group className="mb-3">
+                <Form.Label className="form-label">Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  value={userData.password}
+                  onChange={handleChangeSignup}
+                  required
+                  placeholder="Enter your password"
+                />
               </Form.Group>
             </div>
 
-            <div className="input-container">
-              <Form.Group as={Row} className="mb-3">
-                <Form.Label column md={3} className="form-label">Email :</Form.Label>
-                <Col md={6}>
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    value={userData.email}
-                    onChange={handleChangeSignup}
-                    required
-                    placeholder="Enter your email"
-                  />
-                </Col>
-              </Form.Group>
-            </div>
+            <Button variant="primary" type="submit" className="submit-btn">Sign Up</Button>
 
-            <div className="input-container">
-              <Form.Group as={Row} className="mb-3">
-                <Form.Label column md={3} className="form-label">Password :</Form.Label>
-                <Col md={6}>
-                  <Form.Control
-                    type="password"
-                    name="password"
-                    value={userData.password}
-                    onChange={handleChangeSignup}
-                    required
-                    placeholder="Enter your password"
-                  />
-                </Col>
-              </Form.Group>
-            </div>
-
-            <Button variant="primary" type="submit" className="mt-3">Sign Up</Button>
             <div className="extra-links">
-              <a href="#!" className="register-link" onClick={toggleForm}>Already have an account? Login</a>
+              <span>Already have an account? </span>
+              <a href="#!" className="register-link" onClick={toggleForm}>Login</a>
             </div>
           </Form>
         )}
@@ -203,7 +218,6 @@ const AuthPage = () => {
         {/* Display Success Message */}
         {message && <p className="auth-message">{message}</p>}
       </Container>
-      <Allfooter />
     </div>
   );
 };
