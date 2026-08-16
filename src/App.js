@@ -1,33 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Allnavbar from './Home/Allnavbar';
-import Allhome from './Home/Allhome';
 import Allfooter from './Home/Allfooter';
- 
- 
- 
- 
- 
- 
- 
- 
- 
+import { Outlet } from 'react-router-dom';
 
-class Allproducts extends Component {
- 
-
-  render() {
-    return (
-      <div>
-        <Allnavbar/>
-        <Allhome/>
-        <Allfooter/>
-        
-      
-      
-      </div>
-      
-    );
-  }
+function App() {
+  return (
+    <>
+      <Allnavbar />
+      <Outlet />
+      <Allfooter />
+    </>
+  );
 }
 
-export default Allproducts;
+export default App;

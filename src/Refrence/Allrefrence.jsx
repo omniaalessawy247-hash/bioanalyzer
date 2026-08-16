@@ -21,18 +21,18 @@
        <header className="page-header text-center py-5">
          <h1 className="page-title">References</h1>
          <p className="page-description">Explore books, articles, and research papers in Bioinformatics.</p>
-         {/* شريط البحث */}
+         
          <input type="text" placeholder="Search for books, articles..." className="search-bar" />
        </header>
  
-       {/* فلاتر التصنيف */}
+     
        <div className="filters container py-4 text-center">
          <button onClick={() => filterBooks('books')} className="filter-btn">Books</button>
          <button onClick={() => filterBooks('articles')} className="filter-btn">Articles</button>
          <button onClick={() => filterBooks('papers')} className="filter-btn">Research Papers</button>
        </div>
  
-       {/* قسم الكتب */}
+   
        <section className="reference-category books-section container py-5">
          <h2 className="category-title">Books</h2>
          <div className="book-list">
@@ -47,7 +47,7 @@
          </div>
        </section>
  
-       {/* قسم المقالات */}
+       
        <section className="reference-category articles-section container py-5">
          <h2 className="category-title">Articles</h2>
          <ul className="category-list">
@@ -63,8 +63,7 @@
            <li><a href="https://www.nature.com/articles/s41592-020-0789-3" className="article-link" target="_blank" rel="noopener noreferrer">The Use of AI in Bioinformatics</a></li>
          </ul>
        </section>
- 
-       {/* قسم الأبحاث */}
+  
        <section className="reference-category papers-section container py-5">
          <h2 className="category-title">Research Papers</h2>
          <ul className="category-list">
@@ -80,8 +79,7 @@
            <li><a href="https://www.nature.com/articles/s41592-019-0623-y" className="paper-link" target="_blank" rel="noopener noreferrer">Applications of Bioinformatics in Drug Development</a></li>
          </ul>
        </section>
- 
-       <Allfooter />
+  
      </div>
    );
  }

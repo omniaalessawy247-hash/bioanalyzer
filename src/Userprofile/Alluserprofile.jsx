@@ -206,7 +206,7 @@ function Alluserprofile() {
           </Modal.Footer>
         </Modal>
       </Container>
-      <Allfooter />
+      
     </div>
   );
 }

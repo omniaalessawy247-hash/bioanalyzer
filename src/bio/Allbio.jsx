@@ -3,14 +3,14 @@ import Allnavbar from '../Home/Allnavbar';
 import Allfooter from '../Home/Allfooter';
 
 function Allbio() {
-  // تحديد الأقسام باستخدام ref
+ 
   const introSectionRef = useRef(null);
   const applicationsSectionRef = useRef(null);
   const keyConceptsSectionRef = useRef(null);
   const toolsTechSectionRef = useRef(null);
   const learningPathSectionRef = useRef(null);
 
-  // دالة التمرير إلى القسم
+  
   const scrollToSection = (sectionRef) => {
     window.scrollTo({
       top: sectionRef.current.offsetTop,
@@ -208,7 +208,7 @@ function Allbio() {
 </section>
 
 
-      <Allfooter />
+  
     </div>
   );
 }
